@@ -51,4 +51,11 @@ public class MyUserDetails implements UserDetails {
         return true;
     }
 
+    public int getID(){
+        return user.getId();
+    }
+
+    public String getOnlyOneRole(){
+        return user.getRole();
+    }
 }

@@ -14,6 +14,8 @@ public class Item {
 
     private String itemDescription;
 
+    private Integer itemQuantity;
+
     private User itemOwner;
 
     @Id
@@ -60,4 +62,11 @@ public class Item {
         return this;
     }
 
+    public Integer getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(Integer itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
 }
