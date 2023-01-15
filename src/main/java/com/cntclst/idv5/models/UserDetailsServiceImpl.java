@@ -24,6 +24,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new MyUserDetails(user);
     }
 
+    public String createUser(User user) throws Exception {
 
+        User user1 = userRepository.getUserByUsername(user.getUsername());
+
+        if (user1 != null) {
+            throw new Exception("A user exist with this username");
+        }
+
+        userRepository.save(user);
+        return "Success";
+    }
+
+    public void updatePassword(String username, String pass){
+        User user1 = userRepository.getUserByUsername(username);
+        userRepository.updatePasswordById(pass,user1.getId());
+    }
+
+    public void deleteUser( int id){
+
+        userRepository.deleteById(id);
+    }
 
 }

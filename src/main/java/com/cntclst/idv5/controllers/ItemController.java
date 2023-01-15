@@ -1,6 +1,7 @@
 package com.cntclst.idv5.controllers;
 
 import com.cntclst.idv5.models.*;
+import com.cntclst.idv5.requests.DeleteRequest;
 import com.cntclst.idv5.requests.ItemAddRequest;
 import com.cntclst.idv5.requests.ItemQuantityUpdateRequest;
 import com.cntclst.idv5.requests.ItemResponse;
@@ -81,9 +82,8 @@ public class ItemController {
     //Tested Working
     //Just needs id to be right
     @PostMapping("/item/deleteItem")
-    public ResponseEntity<?> deleteItem(Principal user, @RequestBody ItemQuantityUpdateRequest itemQuantityUpdateRequest){
-
-        itemService.deleteItem(itemQuantityUpdateRequest.getItemid());
+    public ResponseEntity<?> deleteItem(Principal user, @RequestBody DeleteRequest deleteRequest){
+        itemService.deleteItem(deleteRequest.getId());
         return ResponseEntity.ok("Successful");
     }
 }

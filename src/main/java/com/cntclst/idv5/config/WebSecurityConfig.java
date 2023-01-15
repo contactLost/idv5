@@ -1,7 +1,5 @@
 package com.cntclst.idv5.config;
 
-import com.cntclst.idv5.config.JWTAuthFilter;
-import com.cntclst.idv5.config.JWTTokenHelper;
 import com.cntclst.idv5.models.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -76,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 and().
                 exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).
                 and().
-                authorizeRequests().antMatchers("/swagger-ui/**", "/auth/login").permitAll().
+                authorizeRequests().antMatchers("/swagger-ui/**", "/auth/login", "/user/createUser").permitAll().
                 and().
                 authorizeRequests().anyRequest().authenticated().
                 and().
@@ -85,15 +83,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().cors().and().headers().frameOptions().disable();
 
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin().permitAll()
-//                .and()
-//                .httpBasic()
-//                .and()
-//                .logout().permitAll();
     }
 }
 //  WebSecurityConfigurerAdapter deprecated. New version is something like this. Test needed.
